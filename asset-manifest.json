@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/arcgis-jsapi-react/static/css/main.ae49bfa7.css",
-    "main.js": "/arcgis-jsapi-react/static/js/main.00ddd9ca.js",
+    "main.js": "/arcgis-jsapi-react/static/js/main.c36c4478.js",
     "static/js/519.17090912.chunk.js": "/arcgis-jsapi-react/static/js/519.17090912.chunk.js",
     "static/js/9512.4e620f00.chunk.js": "/arcgis-jsapi-react/static/js/9512.4e620f00.chunk.js",
     "static/js/8023.c0786ad0.chunk.js": "/arcgis-jsapi-react/static/js/8023.c0786ad0.chunk.js",
@@ -219,7 +219,7 @@
     "static/js/7776.72372e98.chunk.js": "/arcgis-jsapi-react/static/js/7776.72372e98.chunk.js",
     "index.html": "/arcgis-jsapi-react/index.html",
     "main.ae49bfa7.css.map": "/arcgis-jsapi-react/static/css/main.ae49bfa7.css.map",
-    "main.00ddd9ca.js.map": "/arcgis-jsapi-react/static/js/main.00ddd9ca.js.map",
+    "main.c36c4478.js.map": "/arcgis-jsapi-react/static/js/main.c36c4478.js.map",
     "519.17090912.chunk.js.map": "/arcgis-jsapi-react/static/js/519.17090912.chunk.js.map",
     "9512.4e620f00.chunk.js.map": "/arcgis-jsapi-react/static/js/9512.4e620f00.chunk.js.map",
     "8023.c0786ad0.chunk.js.map": "/arcgis-jsapi-react/static/js/8023.c0786ad0.chunk.js.map",
@@ -436,6 +436,6 @@
   },
   "entrypoints": [
     "static/css/main.ae49bfa7.css",
-    "static/js/main.00ddd9ca.js"
+    "static/js/main.c36c4478.js"
   ]
 }
