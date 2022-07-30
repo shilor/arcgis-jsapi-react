@@ -14,7 +14,7 @@ export default function App() {
             to="neighborhoods"
           >
             Neighborhoods
-          </NavLink>
+          </NavLink>{" "}
           |{" "}
           <NavLink
             className={({ isActive }) =>
