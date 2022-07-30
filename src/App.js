@@ -11,7 +11,7 @@ export default function App() {
             className={({ isActive }) =>
               isActive ? "App-header-link-active" : "App-header-link-default"
             }
-            to="./neighborhoods"
+            to="neighborhoods"
           >
             Neighborhoods
           </NavLink>
@@ -20,7 +20,7 @@ export default function App() {
             className={({ isActive }) =>
               isActive ? "App-header-link-active" : "App-header-link-default"
             }
-            to="./crime"
+            to="crime"
           >
             Crime
           </NavLink>
