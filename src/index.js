@@ -7,6 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import DenverNeighborhoods from "./denverneighborhoods/DenverNeighborhoods";
 import DenverCrimeApp from "./denvercrime/DenverCrimeApp";
 
+import { setAssetPath } from "@esri/calcite-components/dist/components";
+setAssetPath(window.location.href);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
