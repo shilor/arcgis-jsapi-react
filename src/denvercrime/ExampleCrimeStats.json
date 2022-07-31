@@ -1,0 +1,399 @@
+{
+  "results": [
+    {
+      "id": "central-park",
+      "name": "Central Park",
+      "summary": { "count": "140", "density": "15.582", "rate": "0" }
+    },
+    {
+      "id": "sunnyside",
+      "name": "Sunnyside",
+      "summary": { "count": "29", "density": "20.365", "rate": "0" }
+    },
+    {
+      "id": "globeville",
+      "name": "Globeville",
+      "summary": { "count": "29", "density": "14.078", "rate": "0" }
+    },
+    {
+      "id": "sun-valley",
+      "name": "Sun Valley",
+      "summary": { "count": "30", "density": "46.729", "rate": "0" }
+    },
+    {
+      "id": "athmar-park",
+      "name": "Athmar Park",
+      "summary": { "count": "25", "density": "16.171", "rate": "0" }
+    },
+    {
+      "id": "northeast-park-hill",
+      "name": "Northeast Park Hill",
+      "summary": { "count": "55", "density": "16.517", "rate": "0" }
+    },
+    {
+      "id": "wellshire",
+      "name": "Wellshire",
+      "summary": { "count": "1", "density": "1.076", "rate": "0" }
+    },
+    {
+      "id": "rosedale",
+      "name": "Rosedale",
+      "summary": { "count": "6", "density": "10.638", "rate": "0" }
+    },
+    {
+      "id": "hilltop",
+      "name": "Hilltop",
+      "summary": { "count": "24", "density": "13.929", "rate": "0" }
+    },
+    {
+      "id": "hale",
+      "name": "Hale",
+      "summary": { "count": "21", "density": "21.583", "rate": "0" }
+    },
+    {
+      "id": "south-park-hill",
+      "name": "South Park Hill",
+      "summary": { "count": "22", "density": "14.755", "rate": "0" }
+    },
+    {
+      "id": "platt-park",
+      "name": "Platt Park",
+      "summary": { "count": "25", "density": "30.562", "rate": "0" }
+    },
+    {
+      "id": "overland",
+      "name": "Overland",
+      "summary": { "count": "22", "density": "19.59", "rate": "0" }
+    },
+    {
+      "id": "kennedy",
+      "name": "Kennedy",
+      "summary": { "count": "18", "density": "25.641", "rate": "0" }
+    },
+    {
+      "id": "baker",
+      "name": "Baker",
+      "summary": { "count": "56", "density": "37.534", "rate": "0" }
+    },
+    {
+      "id": "bear-valley",
+      "name": "Bear Valley",
+      "summary": { "count": "29", "density": "21.466", "rate": "0" }
+    },
+    {
+      "id": "southmoor-park",
+      "name": "Southmoor Park",
+      "summary": { "count": "12", "density": "12.889", "rate": "0" }
+    },
+    {
+      "id": "indian-creek",
+      "name": "Indian Creek",
+      "summary": { "count": "3", "density": "6.16", "rate": "0" }
+    },
+    {
+      "id": "virginia-village",
+      "name": "Virginia Village",
+      "summary": { "count": "29", "density": "14.933", "rate": "0" }
+    },
+    {
+      "id": "dia",
+      "name": "DIA",
+      "summary": { "count": "98", "density": "2.313", "rate": "0" }
+    },
+    {
+      "id": "harvey-park",
+      "name": "Harvey Park",
+      "summary": { "count": "23", "density": "13.642", "rate": "0" }
+    },
+    {
+      "id": "westwood",
+      "name": "Westwood",
+      "summary": { "count": "49", "density": "32.732", "rate": "0" }
+    },
+    {
+      "id": "auraria",
+      "name": "Auraria",
+      "summary": { "count": "23", "density": "35.659", "rate": "0" }
+    },
+    {
+      "id": "belcaro",
+      "name": "Belcaro",
+      "summary": { "count": "14", "density": "12.017", "rate": "0" }
+    },
+    {
+      "id": "washington-park-west",
+      "name": "Washington Park West",
+      "summary": { "count": "26", "density": "29.782", "rate": "0" }
+    },
+    {
+      "id": "cherry-creek",
+      "name": "Cherry Creek",
+      "summary": { "count": "29", "density": "34.648", "rate": "0" }
+    },
+    {
+      "id": "congress-park",
+      "name": "Congress Park",
+      "summary": { "count": "49", "density": "47.619", "rate": "0" }
+    },
+    {
+      "id": "clayton",
+      "name": "Clayton",
+      "summary": { "count": "21", "density": "27.237", "rate": "0" }
+    },
+    {
+      "id": "cole",
+      "name": "Cole",
+      "summary": { "count": "19", "density": "37.109", "rate": "0" }
+    },
+    {
+      "id": "washington-virginia-vale",
+      "name": "Washington Virginia Vale",
+      "summary": { "count": "28", "density": "15.309", "rate": "0" }
+    },
+    {
+      "id": "barnum-west",
+      "name": "Barnum West",
+      "summary": { "count": "21", "density": "29.006", "rate": "0" }
+    },
+    {
+      "id": "west-colfax",
+      "name": "West Colfax",
+      "summary": { "count": "61", "density": "60.636", "rate": "0" }
+    },
+    {
+      "id": "sloan-lake",
+      "name": "Sloan Lake",
+      "summary": { "count": "20", "density": "14.296", "rate": "0" }
+    },
+    {
+      "id": "regis",
+      "name": "Regis",
+      "summary": { "count": "8", "density": "7.851", "rate": "0" }
+    },
+    {
+      "id": "city-park-west",
+      "name": "City Park West",
+      "summary": { "count": "46", "density": "85.981", "rate": "0" }
+    },
+    {
+      "id": "capitol-hill",
+      "name": "Capitol Hill",
+      "summary": { "count": "99", "density": "146.45", "rate": "0" }
+    },
+    {
+      "id": "civic-center",
+      "name": "Civic Center",
+      "summary": { "count": "39", "density": "128.289", "rate": "0" }
+    },
+    {
+      "id": "union-station",
+      "name": "Union Station",
+      "summary": { "count": "106", "density": "241.458", "rate": "0" }
+    },
+    {
+      "id": "stapleton",
+      "name": "Stapleton",
+      "summary": { "count": "0", "density": "0", "rate": "0" }
+    },
+    {
+      "id": "lowry-field",
+      "name": "Lowry Field",
+      "summary": { "count": "42", "density": "16.285", "rate": "0" }
+    },
+    {
+      "id": "chaffee-park",
+      "name": "Chaffee Park",
+      "summary": { "count": "5", "density": "6.369", "rate": "0" }
+    },
+    {
+      "id": "highland",
+      "name": "Highland",
+      "summary": { "count": "48", "density": "41.631", "rate": "0" }
+    },
+    {
+      "id": "jefferson-park",
+      "name": "Jefferson Park",
+      "summary": { "count": "21", "density": "42.683", "rate": "0" }
+    },
+    {
+      "id": "valverde",
+      "name": "Valverde",
+      "summary": { "count": "31", "density": "32.292", "rate": "0" }
+    },
+    {
+      "id": "windsor",
+      "name": "Windsor",
+      "summary": { "count": "32", "density": "18.713", "rate": "0" }
+    },
+    {
+      "id": "elyria-swansea",
+      "name": "Elyria Swansea",
+      "summary": { "count": "33", "density": "12.722", "rate": "0" }
+    },
+    {
+      "id": "university",
+      "name": "University",
+      "summary": { "count": "26", "density": "20.867", "rate": "0" }
+    },
+    {
+      "id": "cheesman-park",
+      "name": "Cheesman Park",
+      "summary": { "count": "23", "density": "43.643", "rate": "0" }
+    },
+    {
+      "id": "montclair",
+      "name": "Montclair",
+      "summary": { "count": "26", "density": "25.692", "rate": "0" }
+    },
+    {
+      "id": "north-park-hill",
+      "name": "North Park Hill",
+      "summary": { "count": "15", "density": "10.04", "rate": "0" }
+    },
+    {
+      "id": "university-park",
+      "name": "University Park",
+      "summary": { "count": "22", "density": "18.917", "rate": "0" }
+    },
+    {
+      "id": "college-view-south-platte",
+      "name": "College View - South Platte",
+      "summary": { "count": "36", "density": "24.674", "rate": "0" }
+    },
+    {
+      "id": "ruby-hill",
+      "name": "Ruby Hill",
+      "summary": { "count": "26", "density": "17.906", "rate": "0" }
+    },
+    {
+      "id": "hampden",
+      "name": "Hampden",
+      "summary": { "count": "49", "density": "17.345", "rate": "0" }
+    },
+    {
+      "id": "fort-logan",
+      "name": "Fort Logan",
+      "summary": { "count": "13", "density": "4.904", "rate": "0" }
+    },
+    {
+      "id": "harvey-park-south",
+      "name": "Harvey Park South",
+      "summary": { "count": "26", "density": "19.02", "rate": "0" }
+    },
+    {
+      "id": "hampden-south",
+      "name": "Hampden South",
+      "summary": { "count": "51", "density": "17.514", "rate": "0" }
+    },
+    {
+      "id": "goldsmith",
+      "name": "Goldsmith",
+      "summary": { "count": "28", "density": "36.223", "rate": "0" }
+    },
+    {
+      "id": "gateway-green-valley-ranch",
+      "name": "Gateway - Green Valley Ranch",
+      "summary": { "count": "70", "density": "9.506", "rate": "0" }
+    },
+    {
+      "id": "university-hills",
+      "name": "University Hills",
+      "summary": { "count": "25", "density": "17.229", "rate": "0" }
+    },
+    {
+      "id": "mar-lee",
+      "name": "Mar Lee",
+      "summary": { "count": "21", "density": "13.935", "rate": "0" }
+    },
+    {
+      "id": "east-colfax",
+      "name": "East Colfax",
+      "summary": { "count": "59", "density": "55.192", "rate": "0" }
+    },
+    {
+      "id": "cory-merrill",
+      "name": "Cory - Merrill",
+      "summary": { "count": "14", "density": "16.687", "rate": "0" }
+    },
+    {
+      "id": "washington-park",
+      "name": "Washington Park",
+      "summary": { "count": "15", "density": "9.927", "rate": "0" }
+    },
+    {
+      "id": "speer",
+      "name": "Speer",
+      "summary": { "count": "58", "density": "67.916", "rate": "0" }
+    },
+    {
+      "id": "country-club",
+      "name": "Country Club",
+      "summary": { "count": "6", "density": "9.245", "rate": "0" }
+    },
+    {
+      "id": "city-park",
+      "name": "City Park",
+      "summary": { "count": "22", "density": "28.646", "rate": "0" }
+    },
+    {
+      "id": "skyland",
+      "name": "Skyland",
+      "summary": { "count": "3", "density": "3.932", "rate": "0" }
+    },
+    {
+      "id": "marston",
+      "name": "Marston",
+      "summary": { "count": "19", "density": "5.994", "rate": "0" }
+    },
+    {
+      "id": "barnum",
+      "name": "Barnum",
+      "summary": { "count": "23", "density": "29.831", "rate": "0" }
+    },
+    {
+      "id": "villa-park",
+      "name": "Villa Park",
+      "summary": { "count": "39", "density": "39.554", "rate": "0" }
+    },
+    {
+      "id": "west-highland",
+      "name": "West Highland",
+      "summary": { "count": "30", "density": "26.714", "rate": "0" }
+    },
+    {
+      "id": "berkeley",
+      "name": "Berkeley",
+      "summary": { "count": "25", "density": "16.689", "rate": "0" }
+    },
+    {
+      "id": "lincoln-park",
+      "name": "Lincoln Park",
+      "summary": { "count": "65", "density": "50.94", "rate": "0" }
+    },
+    {
+      "id": "whittier",
+      "name": "Whittier",
+      "summary": { "count": "15", "density": "26.643", "rate": "0" }
+    },
+    {
+      "id": "north-capitol-hill",
+      "name": "North Capitol Hill",
+      "summary": { "count": "73", "density": "206.799", "rate": "0" }
+    },
+    {
+      "id": "cbd",
+      "name": "CBD",
+      "summary": { "count": "99", "density": "229.698", "rate": "0" }
+    },
+    {
+      "id": "five-points",
+      "name": "Five Points",
+      "summary": { "count": "171", "density": "97.27", "rate": "0" }
+    },
+    {
+      "id": "montbello",
+      "name": "Montbello",
+      "summary": { "count": "83", "density": "16.397", "rate": "0" }
+    }
+  ]
+}
