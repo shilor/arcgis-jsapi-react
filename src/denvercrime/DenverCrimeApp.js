@@ -3,7 +3,7 @@ import MapView from "@arcgis/core/views/MapView";
 import WebMap from "@arcgis/core/WebMap";
 import BasemapToggle from "@arcgis/core/widgets/BasemapToggle";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
-import * as colorRendererCreator from "@arcgis/core/smartMapping/renderers/color";
+import Legend from "@arcgis/core/widgets/Legend";
 
 import "./DenverCrimeApp.css";
 //import crimeStats from "./ExampleCrimeStats.json";
@@ -69,6 +69,44 @@ const DenverCrimeApp = () => {
             neighborhoodGeometries.push(feature);
           });
 
+          // Configure the renderer
+          const defaultSym = {
+            type: "simple-fill", // autocasts as new SimpleFillSymbol()
+            outline: {
+              // autocasts as new SimpleLineSymbol()
+              color: [128, 128, 128, 0.2],
+              width: "0.5px",
+            },
+          };
+          const renderer = {
+            view: mapView,
+            field: "CRIME_RATE",
+            theme: "above",
+            type: "simple",
+            symbol: defaultSym,
+            visualVariables: [
+              {
+                type: "color",
+                field: "CRIME_RATE",
+                legendOptions: {
+                  title: "Crime Density",
+                },
+                stops: [
+                  {
+                    value: 0.0,
+                    color: [255, 255, 255, 0.5],
+                    label: "0",
+                  },
+                  {
+                    value: 1.0,
+                    color: [0, 0, 255, 0.5],
+                    label: "1",
+                  },
+                ],
+              },
+            ],
+          };
+
           // Create the client-side FeatureLayer
           const localNeighborhoodCrimeLayer = new FeatureLayer({
             source: neighborhoodGeometries,
@@ -87,26 +125,19 @@ const DenverCrimeApp = () => {
                 type: "double",
               },
             ],
+            renderer: renderer,
           });
 
-          // Configure the rendere
-          // TODO: Make it look nice
-          const params = {
-            layer: localNeighborhoodCrimeLayer,
-            view: mapView,
-            field: "CRIME_RATE",
-            classificationMethod: "quantile",
-            numClasses: 4,
-          };
+          if (!webmap.layers.includes(localNeighborhoodCrimeLayer)) {
+            webmap.add(localNeighborhoodCrimeLayer);
+          }
 
-          colorRendererCreator
-            .createClassBreaksRenderer(params)
-            .then((response) => {
-              localNeighborhoodCrimeLayer.renderer = response.renderer;
-              if (!webmap.layers.includes(localNeighborhoodCrimeLayer)) {
-                webmap.add(localNeighborhoodCrimeLayer);
-              }
-            });
+          mapView.ui.add(
+            new Legend({
+              view: mapView,
+            }),
+            "top-right"
+          );
         });
       });
     }
