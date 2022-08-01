@@ -14,8 +14,11 @@ const DenverCrimeApp = () => {
   const [crimeStats, setCrimeStats] = useState([]);
 
   useEffect(() => {
+    console.log("In useEffect");
     if (crimeAppDiv.current) {
-      getCrimeStats();
+      if (crimeStats.length === 0) {
+        getCrimeStats();
+      }
 
       // Initialize application and zoom to Denver
       const webmap = new WebMap({
@@ -53,10 +56,13 @@ const DenverCrimeApp = () => {
 
           // Iterate through the features and add them to the array.
           // Create a new attribute (CRIME_DENSITY) on each feature.
-          results.features.map((feature) => {
-            crimeStats.map((stat) => {
+          crimeStats.map((stat) => {
+            results.features.map((feature) => {
               if (feature.attributes.NBHD_NAME === stat.name) {
-                feature.setAttribute("CRIME_DENSITY", stat.summary.density);
+                feature.setAttribute(
+                  "CRIME_DENSITY",
+                  parseFloat(stat.summary.density)
+                );
                 neighborhoodGeometries.push(feature);
               }
             });
@@ -100,46 +106,49 @@ const DenverCrimeApp = () => {
             ],
           };
 
-          // Create the client-side FeatureLayer
-          const localNeighborhoodCrimeLayer = new FeatureLayer({
-            source: neighborhoodGeometries,
-            objectIdField: "OBJECTID",
-            fields: [
-              {
-                name: "OBJECTID",
-                type: "oid",
-              },
-              {
-                name: "NBHD_ID",
-                type: "integer",
-              },
-              {
-                name: "CRIME_DENSITY",
-                type: "double",
-              },
-            ],
-            renderer: renderer,
-          });
+          if (crimeStats.length > 0) {
+            // Create the client-side FeatureLayer
+            const localNeighborhoodCrimeLayer = new FeatureLayer({
+              source: neighborhoodGeometries,
+              objectIdField: "OBJECTID",
+              fields: [
+                {
+                  name: "OBJECTID",
+                  type: "oid",
+                },
+                {
+                  name: "NBHD_ID",
+                  type: "integer",
+                },
+                {
+                  name: "CRIME_DENSITY",
+                  type: "double",
+                },
+              ],
+              renderer: renderer,
+            });
 
-          if (!webmap.layers.includes(localNeighborhoodCrimeLayer)) {
-            webmap.add(localNeighborhoodCrimeLayer);
+            if (!webmap.layers.includes(localNeighborhoodCrimeLayer)) {
+              webmap.add(localNeighborhoodCrimeLayer);
+            }
+
+            mapView.ui.add(
+              new Legend({
+                view: mapView,
+              }),
+              "top-right"
+            );
           }
-
-          mapView.ui.add(
-            new Legend({
-              view: mapView,
-            }),
-            "top-right"
-          );
         });
       });
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [crimeStats]);
 
   async function getCrimeStats() {
     const crimeApiUrl =
       "https://www.denvergov.org/GISWebServices/CrimeService/1/statistics/neighborhood";
 
+    console.log("In getCrimeStats()");
     jsonp(crimeApiUrl, null, (err, data) => {
       if (err) {
         setCrimeStats([]);
