@@ -1,29 +1,22 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import MapView from "@arcgis/core/views/MapView";
 import WebMap from "@arcgis/core/WebMap";
 import BasemapToggle from "@arcgis/core/widgets/BasemapToggle";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Legend from "@arcgis/core/widgets/Legend";
+import jsonp from "jsonp";
 
 import "./DenverCrimeApp.css";
-//import crimeStats from "./ExampleCrimeStats.json";
 
 const DenverCrimeApp = () => {
   const crimeAppDiv = useRef(null);
 
-  /*
-  async function getNeighborhoodStats() {
-    // The Denver Crime API does not allow CORS. Check on getting whitelisted.
-    const neighborhoodRequest = await fetch(
-      "http://www.denvergov.org/GISWebServices/CrimeService/1/statistics/neighborhood?occurred_from=2022-07-15T00%3A00%3A00&occurred_to=2022-07-30T00%3A00%3A00&categories="
-    );
-    const json = await neighborhoodRequest.json();
-    console.log(json);
-  }
-  */
+  const [crimeStats, setCrimeStats] = useState([]);
 
   useEffect(() => {
     if (crimeAppDiv.current) {
+      getCrimeStats();
+
       // Initialize application and zoom to Denver
       const webmap = new WebMap({
         basemap: "streets-vector",
@@ -44,9 +37,6 @@ const DenverCrimeApp = () => {
 
       mapView.ui.add(basemapToggle, "bottom-right");
 
-      //TODO: Get the crime stats from ExampleCrimeStats.json. Use random numbers for now.
-      //getNeighborhoodStats();
-
       //Neighborhoods feature layer hosted by City & County of Denver
       const hostedNeighborhoodsLayer = new FeatureLayer({
         url: "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_ADMN_NEIGHBORHOOD_A/FeatureServer/13",
@@ -56,17 +46,21 @@ const DenverCrimeApp = () => {
         console.log("In mapView.when()");
 
         // Query the features from the hosted neighborhoods layer and turn
-        // them into a client-side FeatureLayer with a new CRIME_RATE field.
+        // them into a client-side FeatureLayer with a new CRIME_DENSITY field.
         // A hosted feature layer doesn't let you add a renderer with a new field.
         hostedNeighborhoodsLayer.queryFeatures().then(function (results) {
           const neighborhoodGeometries = [];
 
           // Iterate through the features and add them to the array.
-          // Create a new attribute (CRIME_RATE) on each feature
-          // TODO: Map the stats from the Crime API to the features
+          // Create a new attribute (CRIME_DENSITY) on each feature.
           results.features.map((feature) => {
-            feature.setAttribute("CRIME_RATE", Math.random());
-            neighborhoodGeometries.push(feature);
+            crimeStats.map((stat) => {
+              if (feature.attributes.NBHD_NAME === stat.name) {
+                const densityVal = stat.summary.density;
+                feature.setAttribute("CRIME_DENSITY", densityVal);
+                neighborhoodGeometries.push(feature);
+              }
+            });
           });
 
           // Configure the renderer
@@ -80,14 +74,14 @@ const DenverCrimeApp = () => {
           };
           const renderer = {
             view: mapView,
-            field: "CRIME_RATE",
+            field: "CRIME_DENSITY",
             theme: "above",
             type: "simple",
             symbol: defaultSym,
             visualVariables: [
               {
                 type: "color",
-                field: "CRIME_RATE",
+                field: "CRIME_DENSITY",
                 legendOptions: {
                   title: "Crime Density",
                 },
@@ -95,12 +89,12 @@ const DenverCrimeApp = () => {
                   {
                     value: 0.0,
                     color: [255, 255, 255, 0.5],
-                    label: "0",
+                    label: "Low",
                   },
                   {
-                    value: 1.0,
+                    value: 100,
                     color: [0, 0, 255, 0.5],
-                    label: "1",
+                    label: "High",
                   },
                 ],
               },
@@ -121,7 +115,7 @@ const DenverCrimeApp = () => {
                 type: "integer",
               },
               {
-                name: "CRIME_RATE",
+                name: "CRIME_DENSITY",
                 type: "double",
               },
             ],
@@ -141,7 +135,20 @@ const DenverCrimeApp = () => {
         });
       });
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  async function getCrimeStats() {
+    const crimeApiUrl =
+      "https://www.denvergov.org/GISWebServices/CrimeService/1/statistics/neighborhood";
+
+    jsonp(crimeApiUrl, null, (err, data) => {
+      if (err) {
+        setCrimeStats([]);
+      } else {
+        setCrimeStats(data.results);
+      }
+    });
+  }
 
   return <div className="crimeAppDiv" ref={crimeAppDiv}></div>;
 };
