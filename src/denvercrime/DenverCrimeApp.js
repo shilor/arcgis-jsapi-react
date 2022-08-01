@@ -56,8 +56,7 @@ const DenverCrimeApp = () => {
           results.features.map((feature) => {
             crimeStats.map((stat) => {
               if (feature.attributes.NBHD_NAME === stat.name) {
-                const densityVal = stat.summary.density;
-                feature.setAttribute("CRIME_DENSITY", densityVal);
+                feature.setAttribute("CRIME_DENSITY", stat.summary.density);
                 neighborhoodGeometries.push(feature);
               }
             });
