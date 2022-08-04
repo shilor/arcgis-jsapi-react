@@ -12,14 +12,18 @@ const DenverCrimeApp = () => {
   const crimeAppDiv = useRef(null);
 
   const [crimeStats, setCrimeStats] = useState([]);
+  const [retries, setRetries] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log("In useEffect");
-    if (crimeAppDiv.current) {
-      if (crimeStats.length === 0) {
-        getCrimeStats();
-      }
 
+    if (crimeStats.length === 0 && retries < 3) {
+      setRetries(retries + 1);
+      getCrimeStats();
+    }
+
+    if (crimeAppDiv.current && isLoading === false) {
       // Initialize application and zoom to Denver
       const webmap = new WebMap({
         basemap: "streets-vector",
@@ -28,8 +32,6 @@ const DenverCrimeApp = () => {
       const mapView = new MapView({
         container: crimeAppDiv.current,
         map: webmap,
-        center: [-104.9, 39.75],
-        zoom: 10,
       });
 
       // Add the basemap toggle
@@ -130,6 +132,11 @@ const DenverCrimeApp = () => {
 
             if (!webmap.layers.includes(localNeighborhoodCrimeLayer)) {
               webmap.add(localNeighborhoodCrimeLayer);
+
+              localNeighborhoodCrimeLayer.when(() => {
+                console.log("in zoom to extent");
+                mapView.goTo(localNeighborhoodCrimeLayer.fullExtent);
+              });
             }
 
             mapView.ui.add(
@@ -142,6 +149,7 @@ const DenverCrimeApp = () => {
         });
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [crimeStats]);
 
   async function getCrimeStats() {
@@ -150,6 +158,7 @@ const DenverCrimeApp = () => {
 
     console.log("In getCrimeStats()");
     jsonp(crimeApiUrl, null, (err, data) => {
+      setIsLoading(false);
       if (err) {
         setCrimeStats([]);
       } else {

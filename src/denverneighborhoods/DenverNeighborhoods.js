@@ -12,9 +12,8 @@ const DenverNeighborhoods = () => {
 
   useEffect(() => {
     if (mapDiv.current) {
-      /**
-       * Initialize application and zoom to Denver
-       */
+      // Initialize application
+
       const webmap = new WebMap({
         basemap: "streets-vector",
       });
@@ -22,8 +21,6 @@ const DenverNeighborhoods = () => {
       const mapView = new MapView({
         container: mapDiv.current,
         map: webmap,
-        center: [-104.9, 39.75],
-        zoom: 10,
       });
 
       const basemapToggle = new BasemapToggle({
@@ -33,23 +30,24 @@ const DenverNeighborhoods = () => {
 
       mapView.ui.add(basemapToggle, "bottom-right");
 
-      // Define a pop-up for Neighborhoods
-      const popupNeighborhood = {
-        title: "Neighborhood",
-        content: "<b>Neighborhood:</b> {NBHD_NAME}<br>",
-      };
-
-      webmap.add(popupNeighborhood);
-
       //Neighborhoods feature layer hosted by City & County of Denver
       const neighborhoodsLayer = new FeatureLayer({
         url: "https://services1.arcgis.com/zdB7qR0BtYrg0Xpl/ArcGIS/rest/services/ODC_ADMN_NEIGHBORHOOD_A/FeatureServer/13",
         opacity: 0.5,
         outFields: ["NBHD_ID", "NBHD_NAME"],
-        popupTemplate: popupNeighborhood,
+        popupTemplate: {
+          title: "Neighborhood",
+          content: "<b>Neighborhood:</b> {NBHD_NAME}<br>",
+        },
       });
 
-      webmap.add(neighborhoodsLayer);
+      if (!webmap.layers.includes(neighborhoodsLayer)) {
+        webmap.add(neighborhoodsLayer);
+
+        neighborhoodsLayer.when(() => {
+          mapView.goTo(neighborhoodsLayer.fullExtent);
+        });
+      }
 
       //Add Search widget
       const search = new Search({
@@ -57,6 +55,10 @@ const DenverNeighborhoods = () => {
       });
 
       mapView.ui.add(search, "top-right");
+
+      mapView.when(() => {
+        console.log("In mapView.when()");
+      });
     }
   }, []);
 
