@@ -1,11 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { HashRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import DenverNeighborhoods from "./denverneighborhoods/DenverNeighborhoods";
-import DenverCrimeApp from "./denvercrime/DenverCrimeApp";
 
 import { setAssetPath } from "@esri/calcite-components/dist/components";
 setAssetPath(window.location.href);
@@ -13,22 +10,7 @@ setAssetPath(window.location.href);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="neighborhoods" element={<DenverNeighborhoods />} />
-          <Route path="crime" element={<DenverCrimeApp />} />
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>There is nothing here!</p>
-              </main>
-            }
-          />
-        </Route>
-      </Routes>
-    </HashRouter>
+    <App />
   </React.StrictMode>
 );
 

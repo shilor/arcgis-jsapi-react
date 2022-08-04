@@ -1,32 +1,31 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Home from "./home/Home";
+import DenverNeighborhoods from "./denverneighborhoods/DenverNeighborhoods";
+import DenverCrimeApp from "./denvercrime/DenverCrimeApp";
+
 import "./App.css";
+import Layout from "./Layout";
 
 export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>ArcGIS API for JavaScript Examples</h1>
-        <nav>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "App-header-link-active" : "App-header-link-default"
-            }
-            to="neighborhoods"
-          >
-            Neighborhoods
-          </NavLink>{" "}
-          |{" "}
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "App-header-link-active" : "App-header-link-default"
-            }
-            to="crime"
-          >
-            Crime
-          </NavLink>
-        </nav>
-      </header>
-      <Outlet />
+    <div className="app">
+      <HashRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="neighborhoods" element={<DenverNeighborhoods />} />
+            <Route path="crime" element={<DenverCrimeApp />} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There is nothing here!</p>
+                </main>
+              }
+            />
+          </Route>
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
