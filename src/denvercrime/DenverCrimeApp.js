@@ -58,17 +58,17 @@ const DenverCrimeApp = () => {
 
           // Iterate through the features and add them to the array.
           // Create a new attribute (CRIME_DENSITY) on each feature.
-          crimeStats.map((stat) => {
-            results.features.map((feature) => {
+          for (let stat of crimeStats) {
+            for (let feature of results.features) {
               if (feature.attributes.NBHD_NAME === stat.name) {
                 feature.setAttribute(
                   "CRIME_DENSITY",
-                  parseFloat(stat.summary.density)
+                  Number(stat.summary.density)
                 );
                 neighborhoodGeometries.push(feature);
               }
-            });
-          });
+            }
+          }
 
           // Configure the renderer
           const defaultSym = {
@@ -152,7 +152,7 @@ const DenverCrimeApp = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [crimeStats]);
 
-  async function getCrimeStats() {
+  function getCrimeStats() {
     const crimeApiUrl =
       "https://www.denvergov.org/GISWebServices/CrimeService/1/statistics/neighborhood";
 
